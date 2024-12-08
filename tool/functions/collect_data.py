@@ -1,3 +1,4 @@
+import uuid
 from datetime import datetime
 
 
@@ -35,10 +36,12 @@ def collect_data():
         except ValueError:
             print("Invalid input! Please enter numerical values for Scope 3 emissions. Let's try again.")
 
-    date = datetime.now().strftime("%Y-%m-%d")
+    report_id = str(uuid.uuid4())
+    timestamp = int(datetime.now().timestamp())
 
     return {
-        "date": date,
+        "report_id": report_id,
+        "timestamp": timestamp,
         "scope_1": {
             "fuel_combustion": fuel_combustion,
             "company_vehicles": company_vehicles,

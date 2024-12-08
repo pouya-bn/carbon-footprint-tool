@@ -12,7 +12,8 @@ def generate_report(data_dir, data):
 
     suggestions = suggest_reductions(data)
     report = {
-        "date": data["date"],
+        "report_id": data["report_id"],
+        "timestamp": data["timestamp"],
         "scope_1": {
             key: f"{value} kg of CO2e" for key, value in data["scope_1"].items()
         },
@@ -25,11 +26,17 @@ def generate_report(data_dir, data):
         "suggestions": suggestions,
     }
 
-    file_path = os.path.join(data_dir, f"{data['date']}.json")
+    file_name = f"{data['timestamp']}.json"
+    file_path = os.path.join(data_dir, file_name)
     with open(file_path, "w", encoding="utf-8") as report_file:
         ujson.dump(report, report_file, indent=4)
 
-    print(f"Report saved to {file_path}.")
-    print("\nSuggestions for reducing your carbon footprint:")
-    for scope, suggestion in suggestions.items():
-        print(f"- {scope.capitalize().replace("_", " ")}: {suggestion}")
+    print(f"\nReport saved to {file_path}.")
+
+    if suggestions:
+        print("\nSuggestions for reducing your carbon footprint:")
+        for scope, suggestion in suggestions.items():
+            print(f"- {scope.capitalize().replace('_', ' ')}: {suggestion}")
+
+    else:
+        print("\nNo suggestions needed. Your carbon footprint is already within acceptable limits!")
