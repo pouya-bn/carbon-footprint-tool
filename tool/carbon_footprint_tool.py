@@ -9,10 +9,10 @@ class CarbonFootprintMonitor:
         project_dir = os.getcwd()
         self.data_dir = os.path.join(project_dir, data_dir)
         os.makedirs(self.data_dir, exist_ok=True)
-        print(f"Reports will be saved in: {self.data_dir}")
 
     def run(self):
         print("Welcome to the Carbon Footprint Monitoring Tool!")
+        print(f"Reports will be saved in: {self.data_dir}\n")
         data = collect_data()
         generate_report(self.data_dir, data)
 

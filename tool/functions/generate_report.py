@@ -1,8 +1,4 @@
-import os
-
-import ujson
-
-from tool.functions.suggest_reductions import suggest_reductions
+from tool.classes.report import Report
 
 
 def generate_report(data_dir, data):
@@ -10,33 +6,6 @@ def generate_report(data_dir, data):
         print("No data provided. Cannot generate a report.")
         return
 
-    suggestions = suggest_reductions(data)
-    report = {
-        "report_id": data["report_id"],
-        "timestamp": data["timestamp"],
-        "scope_1": {
-            key: f"{value} kg of CO2e" for key, value in data["scope_1"].items()
-        },
-        "scope_2": {
-            key: f"{value} kg of CO2e" for key, value in data["scope_2"].items()
-        },
-        "scope_3": {
-            key: f"{value} kg of CO2e" for key, value in data["scope_3"].items()
-        },
-        "suggestions": suggestions,
-    }
-
-    file_name = f"{data['timestamp']}.json"
-    file_path = os.path.join(data_dir, file_name)
-    with open(file_path, "w", encoding="utf-8") as report_file:
-        ujson.dump(report, report_file, indent=4)
-
-    print(f"\nReport saved to {file_path}.")
-
-    if suggestions:
-        print("\nSuggestions for reducing your carbon footprint:")
-        for scope, suggestion in suggestions.items():
-            print(f"- {scope.capitalize().replace('_', ' ')}: {suggestion}")
-
-    else:
-        print("\nNo suggestions needed. Your carbon footprint is already within acceptable limits!")
+    report = Report(data)
+    report.save(data_dir)
+    report.display_suggestions()
