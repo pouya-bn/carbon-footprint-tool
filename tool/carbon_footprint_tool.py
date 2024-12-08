@@ -1,12 +1,13 @@
 import os
+
 from functions.collect_data import collect_data
 from functions.generate_report import generate_report
 
 
 class CarbonFootprintMonitor:
     def __init__(self, data_dir="reports"):
-        parent_dir = os.path.abspath(os.path.join(os.getcwd(), os.pardir))
-        self.data_dir = os.path.join(parent_dir, data_dir)
+        project_dir = os.getcwd()
+        self.data_dir = os.path.join(project_dir, data_dir)
         os.makedirs(self.data_dir, exist_ok=True)
         print(f"Reports will be saved in: {self.data_dir}")
 

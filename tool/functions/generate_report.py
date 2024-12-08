@@ -1,6 +1,8 @@
 import os
+
 import ujson
-from suggest_reductions import suggest_reductions
+
+from tool.functions.suggest_reductions import suggest_reductions
 
 
 def generate_report(data_dir, data):
@@ -11,10 +13,16 @@ def generate_report(data_dir, data):
     suggestions = suggest_reductions(data)
     report = {
         "date": data["date"],
-        "scope_1": {key: f"{value} kg of CO2e" for key, value in data["scope_1"].items()},
-        "scope_2": {key: f"{value} kg of CO2e" for key, value in data["scope_2"].items()},
-        "scope_3": {key: f"{value} kg of CO2e" for key, value in data["scope_3"].items()},
-        "suggestions": suggestions
+        "scope_1": {
+            key: f"{value} kg of CO2e" for key, value in data["scope_1"].items()
+        },
+        "scope_2": {
+            key: f"{value} kg of CO2e" for key, value in data["scope_2"].items()
+        },
+        "scope_3": {
+            key: f"{value} kg of CO2e" for key, value in data["scope_3"].items()
+        },
+        "suggestions": suggestions,
     }
 
     file_path = os.path.join(data_dir, f"{data['date']}.json")
