@@ -17,6 +17,7 @@ class Report:
         Initializes the Report object with the provided Carbon footprint data.
 
         Parameters:
+            - "client_name" (str): Name of the client.
             - "report_id" (str): Unique identifier for the report.
             - "timestamp" (int): Timestamp when the report was created.
             - "unit" (str): Unit of measurement (e.g., "kg of CO2e").
@@ -25,6 +26,7 @@ class Report:
             - "scope_3" (dict): Indirect value chain emissions data (Scope 3).
         """
         try:
+            self.client_name = data["client_name"]
             self.report_id = data["report_id"]
             self.timestamp = data["timestamp"]
             self.unit = data["unit"]
@@ -46,6 +48,7 @@ class Report:
         """
         try:
             return {
+                "client_name": self.client_name,
                 "report_id": self.report_id,
                 "timestamp": self.timestamp,
                 "unit": self.unit,
@@ -64,7 +67,7 @@ class Report:
         Saves the report data to a JSON file in the specified directory.
         """
         try:
-            file_name = f"{self.timestamp}.json"
+            file_name = f"{self.report_id}.json"
             file_path = os.path.join(data_dir, file_name)
 
             # Create the directory if it doesn't exist

@@ -16,6 +16,9 @@ def collect_data():
     report ID and timestamp for record-keeping, as well as the unit of measurement.
     """
     try:
+        # Prompt for the client name
+        client_name = input("Please enter the name of the client: ")
+
         print("Please enter your Carbon footprint data.")
 
         # Collect Scope 1 data (Direct emissions)
@@ -63,6 +66,7 @@ def collect_data():
 
         # Return the collected data as a dictionary
         return {
+            "client_name": client_name,
             "report_id": report_id,
             "timestamp": timestamp,
             "unit": "kg of CO2e",
