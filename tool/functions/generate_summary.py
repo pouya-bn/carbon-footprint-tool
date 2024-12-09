@@ -2,6 +2,8 @@ import os
 
 import ujson
 
+from tool.functions.visualize_data import visualize_summary
+
 
 def parse_reports(data_dir):
     reports_data = []
@@ -71,5 +73,8 @@ def generate_summary(data_dir):
         print("\nMost Common Suggestions:")
         for suggestion, count in summary["most_common_suggestions"]:
             print(f"- {suggestion} (appeared {count} times)")
+
+        visualize_summary(summary)
+
     else:
         print("No reports found to summarize.")

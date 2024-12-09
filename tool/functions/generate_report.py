@@ -1,5 +1,6 @@
 from tool.classes.report import Report
 from tool.functions.collect_data import collect_data
+from tool.functions.visualize_data import visualize_report
 
 
 def generate_report(data_dir):
@@ -12,7 +13,9 @@ def generate_report(data_dir):
 
         report = Report(data)
         report.save(data_dir)
+
         report.display_suggestions()
+        visualize_report(data)
 
     except FileNotFoundError as e:
         print(f"Error: The directory '{data_dir}' does not exist. {e}")

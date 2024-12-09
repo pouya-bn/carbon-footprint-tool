@@ -40,6 +40,9 @@ class CarbonFootprintMonitor:
                 else:
                     print("\nInvalid choice. Please enter 1, 2, or 3.")
 
+            except KeyboardInterrupt:
+                print("\n\nProgram interrupted by user. Exiting...")
+                break
             except Exception as e:
                 print(f"\nAn unexpected error occurred: {e}")
 
