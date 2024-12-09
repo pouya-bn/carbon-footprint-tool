@@ -43,6 +43,7 @@ def collect_data():
         return {
             "report_id": report_id,
             "timestamp": timestamp,
+            "unit": "kg of CO2e",
             "scope_1": {
                 "fuel_combustion": fuel_combustion,
                 "company_vehicles": company_vehicles,

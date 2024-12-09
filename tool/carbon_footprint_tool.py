@@ -1,7 +1,7 @@
 import os
 
-from functions.collect_data import collect_data
 from functions.generate_report import generate_report
+from functions.generate_summary import generate_summary
 
 
 class CarbonFootprintMonitor:
@@ -10,21 +10,38 @@ class CarbonFootprintMonitor:
             project_dir = os.getcwd()
             self.data_dir = os.path.join(project_dir, data_dir)
             os.makedirs(self.data_dir, exist_ok=True)
-
         except OSError as e:
             print(f"Error: Could not create the reports directory '{data_dir}'. {e}")
             raise
 
     def run(self):
-        try:
-            print("Welcome to the Carbon Footprint Monitoring Tool!")
-            print(f"Reports will be saved in: {self.data_dir}\n")
+        print("\nWelcome to the Carbon Footprint Monitoring Tool!")
+        print(f"Reports will be saved in: {self.data_dir}\n")
 
-            data = collect_data()
-            generate_report(self.data_dir, data)
+        while True:
+            try:
+                print("\nPlease choose an option:")
+                print("1. Add new Carbon footprint data")
+                print("2. Generate summary of all reports")
+                print("3. Exit")
 
-        except Exception as e:
-            print(f"An unexpected error occurred: {e}")
+                choice = input("\nEnter your choice (1/2/3): ")
+
+                if choice == "1":
+                    generate_report(self.data_dir)
+
+                elif choice == "2":
+                    generate_summary(self.data_dir)
+
+                elif choice == "3":
+                    print("\nExiting the Carbon Footprint Monitoring Tool.")
+                    break
+
+                else:
+                    print("\nInvalid choice. Please enter 1, 2, or 3.")
+
+            except Exception as e:
+                print(f"\nAn unexpected error occurred: {e}")
 
 
 if __name__ == "__main__":

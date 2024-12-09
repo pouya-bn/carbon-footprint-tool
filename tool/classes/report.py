@@ -10,11 +10,12 @@ class Report:
         try:
             self.report_id = data["report_id"]
             self.timestamp = data["timestamp"]
+            self.unit = data["unit"]
             self.scope_1 = data["scope_1"]
             self.scope_2 = data["scope_2"]
             self.scope_3 = data["scope_3"]
             self.suggestions = suggest_reductions(data)
-            
+
         except KeyError as e:
             raise ValueError(f"Missing key in data: {e}")
         except Exception as e:
@@ -25,9 +26,10 @@ class Report:
             return {
                 "report_id": self.report_id,
                 "timestamp": self.timestamp,
-                "scope_1": {key: f"{value} kg of CO2e" for key, value in self.scope_1.items()},
-                "scope_2": {key: f"{value} kg of CO2e" for key, value in self.scope_2.items()},
-                "scope_3": {key: f"{value} kg of CO2e" for key, value in self.scope_3.items()},
+                "unit": self.unit,
+                "scope_1": {key: value for key, value in self.scope_1.items()},
+                "scope_2": {key: value for key, value in self.scope_2.items()},
+                "scope_3": {key: value for key, value in self.scope_3.items()},
                 "suggestions": self.suggestions,
             }
 

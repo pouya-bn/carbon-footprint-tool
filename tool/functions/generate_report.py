@@ -1,8 +1,11 @@
 from tool.classes.report import Report
+from tool.functions.collect_data import collect_data
 
 
-def generate_report(data_dir, data):
+def generate_report(data_dir):
     try:
+        data = collect_data()
+
         if not data:
             print("No data provided. Cannot generate a report.")
             return
