@@ -14,11 +14,6 @@ def collect_data():
     This function prompts the user to enter data for relevant information, and it validates the input to
     ensure all data entered is numeric. The collected data is returned as a dictionary with unique
     report ID and timestamp for record-keeping, as well as the unit of measurement.
-
-    Exceptions:
-        KeyboardInterrupt: Raised if the user interrupts data entry.
-        ValueError: Raised if the user enters invalid data (non-numeric values).
-        Exception: General exception handler for any unexpected errors.
     """
     try:
         print("Please enter your Carbon footprint data.")
@@ -32,6 +27,7 @@ def collect_data():
                 other_direct_sources = float(input("Other direct emissions (kg of CO2e): "))
                 break  # Exit loop once valid data is entered
             except ValueError:
+                # Raised if the user enters invalid data (non-numeric values)
                 print("Invalid input! Please enter numerical values for Scope 1 emissions. Let's try again.")
 
         # Collect Scope 2 data (Indirect emissions from purchased energy)
@@ -43,6 +39,7 @@ def collect_data():
                 cooling = float(input("Cooling (kg of CO2e): "))
                 break  # Exit loop once valid data is entered
             except ValueError:
+                # Raised if the user enters invalid data (non-numeric values)
                 print("Invalid input! Please enter numerical values for Scope 2 emissions. Let's try again.")
 
         # Collect Scope 3 data (Indirect value chain emissions)
@@ -55,6 +52,7 @@ def collect_data():
                 employee_commuting = float(input("Employee commuting (kg of CO2e): "))
                 break  # Exit loop once valid data is entered
             except ValueError:
+                # Raised if the user enters invalid data (non-numeric values)
                 print("Invalid input! Please enter numerical values for Scope 3 emissions. Let's try again.")
 
         # Generate a unique report ID and timestamp for the report
@@ -87,7 +85,7 @@ def collect_data():
         }
 
     except KeyboardInterrupt:
-        # Handle user interrupt gracefully
+        # Raised if the user interrupts data entry
         print("\nData collection interrupted by the user. Exiting...")
         return
     except Exception as e:
