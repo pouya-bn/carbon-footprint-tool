@@ -1,0 +1,25 @@
+{
+    "client_name": "Client K",
+    "report_id": "238d1fd8-16f1-4938-bff3-73de2f5ae978",
+    "timestamp": 1733759516,
+    "unit": "kg of CO2e",
+    "scope_1": {
+        "fuel_combustion": 3000,
+        "company_vehicles": 5000,
+        "other_direct_sources": 3000
+    },
+    "scope_2": {
+        "electricity": 1500,
+        "heating": 1000,
+        "cooling": 2000
+    },
+    "scope_3": {
+        "supplier_emissions": 1000,
+        "transportation": 1000,
+        "waste": 0,
+        "employee_commuting": 0
+    },
+    "suggestions": {
+        "scope_1": "Consider optimizing fuel usage, adopting electric vehicles, or upgrading equipment."
+    }
+}

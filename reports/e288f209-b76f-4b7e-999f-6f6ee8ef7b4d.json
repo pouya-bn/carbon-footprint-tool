@@ -1,0 +1,27 @@
+{
+    "client_name": "Client I",
+    "report_id": "e288f209-b76f-4b7e-999f-6f6ee8ef7b4d",
+    "timestamp": 1733759162,
+    "unit": "kg of CO2e",
+    "scope_1": {
+        "fuel_combustion": 12000,
+        "company_vehicles": 5000,
+        "other_direct_sources": 2500
+    },
+    "scope_2": {
+        "electricity": 18000,
+        "heating": 7000,
+        "cooling": 3500
+    },
+    "scope_3": {
+        "supplier_emissions": 40000,
+        "transportation": 15000,
+        "waste": 8000,
+        "employee_commuting": 4000
+    },
+    "suggestions": {
+        "scope_1": "Consider optimizing fuel usage, adopting electric vehicles, or upgrading equipment.",
+        "scope_2": "Switch to renewable energy sources or implement energy-efficient practices.",
+        "scope_3": "Engage suppliers on sustainability, improve waste management, and optimize logistics."
+    }
+}

@@ -1,0 +1,23 @@
+{
+    "client_name": "Client F",
+    "report_id": "8c7b39e2-1562-495b-bb84-70b9edbfe58d",
+    "timestamp": 1733758875,
+    "unit": "kg of CO2e",
+    "scope_1": {
+        "fuel_combustion": 3000,
+        "company_vehicles": 1000,
+        "other_direct_sources": 500
+    },
+    "scope_2": {
+        "electricity": 1500,
+        "heating": 500,
+        "cooling": 200
+    },
+    "scope_3": {
+        "supplier_emissions": 4000,
+        "transportation": 1000,
+        "waste": 300,
+        "employee_commuting": 100
+    },
+    "suggestions": {}
+}
